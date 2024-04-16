@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1083209911290",
+    "project_id": "fitness-leal",
+    "storage_bucket": "fitness-leal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083209911290:android:5f212221601b6f8f073243",
+        "android_client_info": {
+          "package_name": "com.example.app_trainning_leal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOTgmYwchJB1VZ9PuJcGnEUjfnZQnt9WA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

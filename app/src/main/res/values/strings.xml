@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Fitness Center</string>
+    <string name="login_title">Login</string>
+    <string name="login_name">Digite seu nome</string>
+    <string name="login_email">Digite seu email</string>
+    <string name="login_password">Digite sua senha</string>
+    <string name="login_forgot">Esqueci minha senha</string>
+    <string name="login_btn">Entrar</string>
+    <string name="login_register">Não tem cadastro ainda?</string>
+    <string name="login_register_new_btn">Cadastre-se</string>
+    <string name="register_title">Cadastro</string>
+    <string name="login_register_btn">Cadastrar</string>
+    <string name="list_all">Histórico</string>
+</resources>
