@@ -6,6 +6,8 @@
     android:fillViewport="true">
 
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -13,6 +15,10 @@
         android:layout_height="wrap_content"
         android:background="@color/colorSecondary"
         tools:context=".ui.activity.RegisterLoginActivity">
+
+        <include
+            android:id="@+id/toolbarMain"
+            layout="@layout/toolbar" />
 
         <ImageView
             android:id="@+id/logo_register"

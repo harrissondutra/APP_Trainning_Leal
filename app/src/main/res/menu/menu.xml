@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_more"
-        android:title="@string/list_all"
-        android:icon="@drawable/baseline_history_24"
-        app:showAsAction="ifRoom">
+        android:id="@+id/saveData"
+        android:title="@string/save_data"
+        android:icon="@drawable/sharp_save_24"
+        app:showAsAction="always">
 
     </item>
 

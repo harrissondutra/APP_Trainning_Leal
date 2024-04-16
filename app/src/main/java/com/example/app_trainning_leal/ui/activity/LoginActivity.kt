@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.app_trainning_leal.MainActivity
 import com.example.app_trainning_leal.R
 import com.example.app_trainning_leal.databinding.ActivityLoginBinding
 import com.google.android.material.snackbar.Snackbar

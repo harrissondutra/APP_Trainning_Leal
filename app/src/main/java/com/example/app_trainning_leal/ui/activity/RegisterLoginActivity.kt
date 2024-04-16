@@ -11,6 +11,7 @@ import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.app_trainning_leal.R
 import com.example.app_trainning_leal.databinding.ActivityRegisterLoginBinding
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Firebase
@@ -34,11 +35,10 @@ class RegisterLoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         window.statusBarColor = getColor(R.color.colorSecondary)
 
-/*        val toolbar: MaterialToolbar = findViewById(R.id.main_toolbar)
-        toolbar.setTitle(getString(R.string.app_name))
-        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24)
-        toolbar.setCollapseIcon(R.drawable.baseline_history_24)
-        toolbar.setBackgroundColor(getColor(R.color.colorSecondary))*/
+        val toolbar: MaterialToolbar = findViewById(R.id.main_toolbar)
+        toolbar.setTitle(" ")
+        toolbar.setBackgroundColor( getColor(R.color.colorSecondary))
+        setSupportActionBar(toolbar)
 
         binding.registerButton.setOnClickListener { view ->
 

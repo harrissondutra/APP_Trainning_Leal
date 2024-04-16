@@ -10,5 +10,10 @@
     <string name="login_register_new_btn">Cadastre-se</string>
     <string name="register_title">Cadastro</string>
     <string name="login_register_btn">Cadastrar</string>
-    <string name="list_all">Histórico</string>
+    <string name="save_data">Salvar</string>
+    <string name="hint_name_trainning">Meu novo plano de treino</string>
+    <string name="txt_trainnig_title">Adicionar novo</string>
+    <string name="txt_more_trainnig">Adicionar\nExercício</string>
+    <string name="txt_new_trainnig_title">Planos de treino</string>
+    <string name="desc_logo">Logo do app</string>
 </resources>
