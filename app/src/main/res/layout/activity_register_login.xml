@@ -17,7 +17,7 @@
         tools:context=".ui.activity.RegisterLoginActivity">
 
         <include
-            android:id="@+id/toolbarMain"
+            android:id="@+id/toolbarRegister"
             layout="@layout/toolbar" />
 
         <ImageView

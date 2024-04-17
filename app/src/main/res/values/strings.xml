@@ -14,6 +14,9 @@
     <string name="hint_name_trainning">Meu novo plano de treino</string>
     <string name="txt_trainnig_title">Adicionar novo</string>
     <string name="txt_more_trainnig">Adicionar\nExercício</string>
+    <string name="txt_add_exercise">Adicionar</string>
     <string name="txt_new_trainnig_title">Planos de treino</string>
+    <string name="txt_new_exercises_title">Escolher exercícios</string>
     <string name="desc_logo">Logo do app</string>
+    <string name="txt_exercise_title">Selecione exercícios para:</string>
 </resources>

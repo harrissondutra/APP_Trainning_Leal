@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/title_trainning_item_layout"
+    android:id="@+id/title_exercise_item_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_trainning"
+        android:id="@+id/card_exercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="20dp"
-        app:strokeColor="@color/colorSecondaryBlack"
-        android:backgroundTint="@color/colorSecondaryBlack"
+        app:strokeColor="@color/colorPrimaryBlack"
+        android:backgroundTint="@color/colorPrimaryBlack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
         >
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/colorPrimaryBlack"
+            android:backgroundTint="@color/colorPrimaryBlack"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -32,6 +34,7 @@
                 app:cardCornerRadius="15dp"
                 android:elevation="20dp"
                 android:padding="20dp"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
@@ -39,7 +42,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/leal_logo"
+                    android:src="@drawable/leal_logo_2"
                     android:contentDescription="@string/desc_logo" />
 
 
@@ -67,7 +70,7 @@
                 app:layout_constraintTop_toTopOf="@id/ico_default_circle"
                 app:layout_constraintBottom_toBottomOf="@id/ico_default_circle"
                 app:layout_constraintEnd_toStartOf="@id/ico_default_circle"
-                android:text="@string/txt_more_trainnig"
+                android:text="@string/txt_add_exercise"
                 android:textColor="@color/white"
                 android:textAlignment="center"
                 android:textSize="10sp"
@@ -88,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/baseline_add_circle_24"
+                android:src="@drawable/baseline_add_circle_24_color_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="@id/card_exercise_title"
                 app:layout_constraintTop_toTopOf="@id/card_exercise_title" />

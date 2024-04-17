@@ -22,6 +22,7 @@ import com.example.app_trainning_leal.ui.model.TitleTrainning
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 
@@ -43,13 +44,17 @@ class MainActivity : AppCompatActivity() {
         //Personalização da AppBar
         window.statusBarColor = getColor(R.color.colorSecondaryBlack)
         val toolbar: MaterialToolbar = findViewById(R.id.main_toolbar)
-        toolbar.setTitle(getString(R.string.txt_new_trainnig_title))
         toolbar.setNavigationIcon(R.drawable.round_logout_24)
+        toolbar.setTitle(getString(R.string.txt_new_trainnig_title))
         toolbar.setBackgroundColor(getColor(R.color.colorSecondaryBlack))
         setSupportActionBar(toolbar)
 
         toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            true
         }
         toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -83,6 +88,9 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+
+
 
 
     }
@@ -143,6 +151,11 @@ class MainActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: ListTrainningViewHolder, position: Int) {
             holder.titleTraining.text = listTrainning[position].nome
+            holder.addTrainning.setOnClickListener {
+                val intent = Intent(this@MainActivity, ListExerciseActivity::class.java)
+                intent.putExtra("titleTrainning", listTrainning[position].nome)
+                startActivity(intent)
+            }
         }
 
         override fun getItemCount(): Int = listTrainning.size
@@ -150,6 +163,7 @@ class MainActivity : AppCompatActivity() {
 
         inner class ListTrainningViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
             val titleTraining: TextView = itemview.findViewById(R.id.title_trainning_text)
+            val addTrainning: ImageView = itemview.findViewById(R.id.ico_default_circle)
         }
     }
 
