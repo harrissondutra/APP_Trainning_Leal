@@ -42,7 +42,6 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.appbar.AppBarLayout
-
         android:id="@+id/main_appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,6 +63,7 @@
             app:menu="@menu/menu"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:layout_scrollEffect="compress"
+
             app:navigationIcon="@drawable/baseline_arrow_back_24">
         </com.google.android.material.appbar.MaterialToolbar>
 

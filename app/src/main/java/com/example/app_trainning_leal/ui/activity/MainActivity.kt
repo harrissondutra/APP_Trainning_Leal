@@ -13,7 +13,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_trainning_leal.R
@@ -21,10 +20,9 @@ import com.example.app_trainning_leal.databinding.ActivityMainBinding
 import com.example.app_trainning_leal.ui.model.TitleTrainning
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         toolbar.setBackgroundColor(getColor(R.color.colorSecondaryBlack))
         setSupportActionBar(toolbar)
 
+
+
         toolbar.setNavigationOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, LoginActivity::class.java)
@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        setupRecyclerView()
         fetchTitleTrainning()
 
         // Criação de novo treino
@@ -99,15 +100,17 @@ class MainActivity : AppCompatActivity() {
 
         listTitleTrainning.clear()
 
-        db.collection("titleTrainning") // Corrigindo o nome da coleção
+        db.collection("titleTrainning")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val titleTrainning = document.toObject(TitleTrainning::class.java)
+                    titleTrainning.id = document.id
                     listTitleTrainning.add(titleTrainning)
-                    Log.d(TAG, "Document data: ${document.data}") // Adicionando log para verificar os dados
                 }
-                setupRecyclerView()
+                listTitleTrainning = ArrayList(listTitleTrainning.sortedBy { it.nome })
+                setupRecyclerView() // Configura a RecyclerView antes de atualizar os dados do adaptador
+                adapter.updateData(listTitleTrainning) // Atualiza os dados do adaptador
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
@@ -121,7 +124,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Treino adicionado", Toast.LENGTH_SHORT).show()
                 clearInputs()
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                fetchTitleTrainning() // Atualiza a lista e a RecyclerView
+                fetchTitleTrainning()
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -129,7 +132,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = ListTrainningAdapter(listTitleTrainning)
+        val trainningId = intent.getStringExtra("trainningId")
+        adapter = ListTrainningAdapter(listTitleTrainning, trainningId)
         binding.rvMain.layoutManager = LinearLayoutManager(this)
         binding.rvMain.adapter = adapter
 
@@ -142,7 +146,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private inner class ListTrainningAdapter(
-        private val listTrainning: ArrayList<TitleTrainning>
+        private var listTrainning: ArrayList<TitleTrainning>,
+        var trainningId: String?
+
     ) : RecyclerView.Adapter<ListTrainningAdapter.ListTrainningViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListTrainningViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.title_trainning_item, parent, false)
@@ -150,11 +156,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: ListTrainningViewHolder, position: Int) {
+
             holder.titleTraining.text = listTrainning[position].nome
+
             holder.addTrainning.setOnClickListener {
-                val intent = Intent(this@MainActivity, ListExerciseActivity::class.java)
-                intent.putExtra("titleTrainning", listTrainning[position].nome)
-                startActivity(intent)
+
+                val trainningId = listTrainning[position].id
+                if (trainningId != null) {
+                    val intent = Intent(this@MainActivity, ListExerciseActivity::class.java)
+                    intent.putExtra("titleTrainningId", listTrainning[position].id)
+                    intent.putExtra("trainningId", trainningId)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this@MainActivity, "Erro ao adicionar treino", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
 
@@ -164,6 +180,12 @@ class MainActivity : AppCompatActivity() {
         inner class ListTrainningViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
             val titleTraining: TextView = itemview.findViewById(R.id.title_trainning_text)
             val addTrainning: ImageView = itemview.findViewById(R.id.ico_default_circle)
+        }
+
+
+        fun updateData(newList: ArrayList<TitleTrainning>) {
+            listTrainning = newList
+            notifyDataSetChanged()
         }
     }
 
