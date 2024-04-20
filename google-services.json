@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1083209911290",
+    "firebase_url": "https://fitness-leal-default-rtdb.firebaseio.com",
     "project_id": "fitness-leal",
     "storage_bucket": "fitness-leal.appspot.com"
   },
@@ -12,7 +13,12 @@
           "package_name": "com.example.app_trainning_leal"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1083209911290-f0gfi9l9jtb0c3jq5tp044ellp7o590f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDOTgmYwchJB1VZ9PuJcGnEUjfnZQnt9WA"
@@ -20,7 +26,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083209911290-f0gfi9l9jtb0c3jq5tp044ellp7o590f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
